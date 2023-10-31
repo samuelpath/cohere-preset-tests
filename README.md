@@ -21,7 +21,7 @@ Here's what was expected:
 
 > I am at peace, with the weight of the world removed from my shoulders, and with a clear mind, untroubled by the trivialities of life, I feel an untroubled joy, and an untroubled hope, for my future.
 
-And here are the 3 results I got:
+And here are the 3 results I got (We are not expecting exactly similar results, but at least some similarity):
 
 > 1. "Though the protagonist had a tendency to embellish his sentences, the rephrased versions still maintained the original meaning. The habit of the Victorian novelist didn't change the essence of the sentences but added more detail and flourish. When the protagonist wrote, "
 > 2. "Though the man had a way with words, I found it difficult to communicate with him knowing he'd edit everything I said."
@@ -29,7 +29,7 @@ And here are the 3 results I got:
 
 I assumed that the model must have changed since the preset's prompt was written.
 
-I reached out to @mrmer1, the documentation's author, who confirmed my analysis:
+I reached out to [@mrmer1](https://github.com/mrmer1), the documentation's author, who confirmed my analysis:
 
 > We made some model updates recently and the prompt now works best with an instruction-style text.
 
@@ -42,6 +42,20 @@ Surely we can't expect the documentation team to manually run all the presets re
 This mini project is an attempt to automatically validate that the outputs are similar to what we expect.
 
 ## How does it work
+
+The approach is very simple and goes through the following steps:
+- List all the presets data in `presets.py`. For each preset, we have the following entries:
+-- name
+-- max_tokens
+-- temperature
+-- stop_sequences
+-- prompt
+-- expected_output
+- For each preset, call Cohere's [generate](https://docs.cohere.com/reference/generate) endpoint with all the inputs from `presets.py` (except the `expected_output`) to get the current output
+- Get the vector embeddings for both the current and expected outputs using Cohere's [embed](https://docs.cohere.com/reference/embed) endpoint
+- Compare the current and expected outputs using scikit-learn's [cosine similarity](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html), giving a value between 0 (completely different) and 1 (exactly similar)
+- Display the similarity score for each preset
+- If the score is above a given threshold (setup in `minimum_cosine_similarity` in `config.py`), pass the test (✅), otherwise fail (❌)
 
 ```
 ✅, Preset Name: Product Feature to Benefit, Coside Similarity: 0.97

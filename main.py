@@ -48,4 +48,4 @@ for preset_data in presets_data:
     if current_output is not None:
         similarity = calculate_similarity(preset.expected_output, current_output)
         is_pass = similarity >= minimum_cosine_similarity
-        print(f"{'✅' if is_pass else '❌'}, Preset Name: {preset.name}, Coside Similarity: {similarity:.2f}")
+        print(f"{'✅' if is_pass else '❌'}, Preset Name: {preset.name}, Cosine Similarity: {similarity:.2f}")
