@@ -57,6 +57,10 @@ The approach is very simple and goes through the following steps:
 - Display the similarity score for each preset
 - If the score is above a given threshold (setup in `minimum_cosine_similarity` in `config.py`), pass the test (✅), otherwise fail (❌)
 
+Here's the flow in a diagram:
+
+![Diagram flow](./Diagram.png "Diagram flow")
+
 ## How to run the script
 
 - Enter your Cohere API key in `config.py`. If you don't have any, you can get a Trial key for free in the [Cohere Dashboard](https://dashboard.cohere.com/api-keys). Note that you won't be able to run the script for all the presets at once using the Trial key since it is rate limited to 10 API calls per minute, and here we are making 3 API calls per preset (1 to generate the output and 2 to get the embeddings)
