@@ -45,17 +45,26 @@ This mini project is an attempt to automatically validate that the outputs are s
 
 The approach is very simple and goes through the following steps:
 - Manually list all the presets data in `presets.py`. For each preset, we have the following entries:
-   - name
-   - max_tokens
-   - temperature
-   - stop_sequences
-   - prompt
-   - expected_output
+   - `name`
+   - `max_tokens`
+   - `temperature`
+   - `stop_sequences`
+   - `prompt`
+   - `expected_output`
 - For each preset, call Cohere's [generate](https://docs.cohere.com/reference/generate) endpoint with all the inputs from `presets.py` (except the `expected_output`) to get the current output
 - Get the vector embeddings for both the current and expected outputs using Cohere's [embed](https://docs.cohere.com/reference/embed) endpoint
 - Compare the current and expected outputs using scikit-learn's [cosine similarity](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html), giving a value between 0 (completely different) and 1 (exactly similar)
 - Display the similarity score for each preset
 - If the score is above a given threshold (setup in `minimum_cosine_similarity` in `config.py`), pass the test (✅), otherwise fail (❌)
+
+## How to run the script
+
+- Enter your Cohere API key in `config.py`. If you don't have any, you can get a Trial key for free in the [Cohere Dashboard](https://dashboard.cohere.com/api-keys). Note that you won't be able to run the script for all the presets at once using the Trial key since it is rate limited to 10 API calls per minute, and here we are making 3 API calls per preset (1 to generate the output and 2 to get the embeddings)
+- Decide what your minimum similarity threshold is in `minimum_cosine_similarity` in `config.py`
+- Install the `cohere`, `numpy` and `sklearn` libraries (`pip install cohere numpy sklearn`)
+- Run the script (in my case, I'm using Python 3.10, so: `python3.10 main.py`)
+
+You should see something like this in your terminal:
 
 ```
 ✅, Preset Name: Product Feature to Benefit, Coside Similarity: 0.97
@@ -63,5 +72,6 @@ The approach is very simple and goes through the following steps:
 ✅, Preset Name: Business Model Canvas, Coside Similarity: 0.95
 ✅, Preset Name: Email Keyword Extraction, Coside Similarity: 0.99
 ✅, Preset Name: Simplify Technical Concepts, Coside Similarity: 0.81
+❌, Preset Name: Keywords To Email, Cosine Similarity: 0.44
 ❌, Preset Name: Victorian Style Writing, Coside Similarity: 0.53
 ```
