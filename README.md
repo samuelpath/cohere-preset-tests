@@ -79,3 +79,5 @@ You should see something like this in your terminal:
 ❌, Preset Name: Keywords To Email, Cosine Similarity: 0.44
 ❌, Preset Name: Victorian Style Writing, Cosine Similarity: 0.53
 ```
+
+This tells us that the `Keywords To Email` and `Victorian Style Writing` presets' prompts need to be updated. And indeed, if we have a look at the presets, we see that the current output is way too different from the expected output.
