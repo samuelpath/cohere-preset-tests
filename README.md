@@ -71,11 +71,11 @@ Here's the flow in a diagram:
 You should see something like this in your terminal:
 
 ```
-✅, Preset Name: Product Feature to Benefit, Coside Similarity: 0.97
-✅, Preset Name: Product Pitch, Coside Similarity: 0.91
-✅, Preset Name: Business Model Canvas, Coside Similarity: 0.95
-✅, Preset Name: Email Keyword Extraction, Coside Similarity: 0.99
-✅, Preset Name: Simplify Technical Concepts, Coside Similarity: 0.81
+✅, Preset Name: Product Feature to Benefit, Cosine Similarity: 0.97
+✅, Preset Name: Product Pitch, Cosine Similarity: 0.91
+✅, Preset Name: Business Model Canvas, Cosine Similarity: 0.95
+✅, Preset Name: Email Keyword Extraction, Cosine Similarity: 0.99
+✅, Preset Name: Simplify Technical Concepts, Cosine Similarity: 0.81
 ❌, Preset Name: Keywords To Email, Cosine Similarity: 0.44
-❌, Preset Name: Victorian Style Writing, Coside Similarity: 0.53
+❌, Preset Name: Victorian Style Writing, Cosine Similarity: 0.53
 ```
