@@ -44,13 +44,13 @@ This mini project is an attempt to automatically validate that the outputs are s
 ## How does it work
 
 The approach is very simple and goes through the following steps:
-- List all the presets data in `presets.py`. For each preset, we have the following entries:
--- name
--- max_tokens
--- temperature
--- stop_sequences
--- prompt
--- expected_output
+- Manually list all the presets data in `presets.py`. For each preset, we have the following entries:
+   - name
+   - max_tokens
+   - temperature
+   - stop_sequences
+   - prompt
+   - expected_output
 - For each preset, call Cohere's [generate](https://docs.cohere.com/reference/generate) endpoint with all the inputs from `presets.py` (except the `expected_output`) to get the current output
 - Get the vector embeddings for both the current and expected outputs using Cohere's [embed](https://docs.cohere.com/reference/embed) endpoint
 - Compare the current and expected outputs using scikit-learn's [cosine similarity](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.cosine_similarity.html), giving a value between 0 (completely different) and 1 (exactly similar)
