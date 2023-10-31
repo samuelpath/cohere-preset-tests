@@ -59,7 +59,7 @@ The approach is very simple and goes through the following steps:
 
 Here's the flow in a diagram:
 
-![Diagram flow](./Diagram.png "Diagram flow")
+![Diagram flow](./Diagram.png "Diagram flow" | width=400)
 
 ## How to run the script
 
