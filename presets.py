@@ -1,10 +1,10 @@
 presets_data = [
     {
-      "preset_name": "Product Feature to Benefit",
+      "name": "Product Feature to Benefit",
       "max_tokens": 200,
       "temperature": 0.4,
       "stop_sequences": [],
-      "input": """Turn the following product feature into a list of benefits. Group them into three types of benefits: Functional Benefits, Emotional Benefits, and Social Benefits.
+      "prompt": """Turn the following product feature into a list of benefits. Group them into three types of benefits: Functional Benefits, Emotional Benefits, and Social Benefits.
 
 Product Feature:
 Our app automatically transcribes your meetings. It uses state-of-the-art speech-to-text technology that works even in noisy backgrounds. Once the transcription is done, our app creates its summary and automatically emails it to the meeting attendees.""",
@@ -24,11 +24,11 @@ Social Benefits:
 - Increase transparency by providing a record of the meeting for everyone to see."""
     },
     {
-      "preset_name": "Product Pitch",
+      "name": "Product Pitch",
       "max_tokens": 200,
       "temperature": 0.5,
       "stop_sequences": [],
-      "input": """Generate a pitch for the following product: An AI chess tutor
+      "prompt": """Generate a pitch for the following product: An AI chess tutor
 
 The pitch must include the following sections.
 1. Problem
@@ -64,11 +64,11 @@ Business Model:
 -Freemium"""
     },
     {
-      "preset_name": "Business Model Canvas",
+      "name": "Business Model Canvas",
       "max_tokens": 200,
       "temperature": 0.2,
       "stop_sequences": [],
-      "input": """Generate a Business Model Canvas consisting of the following nine building blocks.
+      "prompt": """Generate a Business Model Canvas consisting of the following nine building blocks.
 1 - Customer Segments
 2 - Value Propositions
 3 - Channels
@@ -103,11 +103,11 @@ Regularly communicate with customers to understand their needs and provide updat
 Revenue is generated through monthly subscriptions for the satellite broadband service, with optional add-ons such as increased data usage or faster"""
     },
     {
-      "preset_name": "Email Keyword Extraction",
+      "name": "Email Keyword Extraction",
       "max_tokens": 40,
       "temperature": 0.4,
       "stop_sequences": ["--"],
-      "input": """Extract the product and return address from this email:
+      "prompt": """Extract the product and return address from this email:
 
 Dear Elliott,
 
@@ -120,21 +120,21 @@ Return Address: 171 John Street, Toronto ON, M5T 1X2
 """
     },
     {
-      "preset_name": "Simplify Technical Concepts",
+      "name": "Simplify Technical Concepts",
       "max_tokens": 158,
       "temperature": 0,
       "stop_sequences": ["--"],
-      "input": """Simplify the following technical explanation.
+      "prompt": """Simplify the following technical explanation.
 
 The core idea of information theory is that the informational value of a communicated message depends on the degree to which the content of the message is surprising. If a highly likely event occurs, the message carries very little information. On the other hand, if a highly unlikely event occurs, the message is much more informative.""",
       "expected_output": """Information theory is based on the idea that the more surprising an event is, the more information it carries."""
     },
     {
-      "preset_name": "Keywords To Email",
+      "name": "Keywords To Email",
       "max_tokens": 150,
       "temperature": 0.2,
       "stop_sequences": ["--"],
-      "input": """Write an email about the following:
+      "prompt": """Write an email about the following:
 - launch of new fitness watch series
 - email or live chat for any questions.""",
       "expected_output": """Hello, 
@@ -147,11 +147,11 @@ Thank you,
 [Your Name]""",
     },
     {
-      "preset_name": "Victorian Style Writing",
+      "name": "Victorian Style Writing",
       "max_tokens": 420,
       "temperature": 0.7,
       "stop_sequences": [],
-      "input": """Turn the following text into beautiful and wandering Victorian prose without changing the original meaning.
+      "prompt": """Turn the following text into beautiful and wandering Victorian prose without changing the original meaning.
 
 Original Text:
 "He was average." 
