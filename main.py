@@ -41,9 +41,8 @@ def calculate_similarity(text1, text2):
     text2_embeddings = np.array(co.embed([text2]).embeddings)
     return cosine_similarity(text1_embeddings, text2_embeddings)[0][0]
 
-presets_data = [Preset(**preset) for preset in presets_data]
-
-for preset in presets_data:
+for preset_data in presets_data:
+    preset = Preset(**preset_data)
     current_output = get_current_output(preset.prompt, preset.max_tokens, preset.temperature, preset.stop_sequences)
 
     if current_output is not None:
