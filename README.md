@@ -41,6 +41,16 @@ Surely we can't expect the documentation team to manually run all the presets re
 
 This mini project is an attempt to automatically validate that the outputs are similar to what we expect.
 
+## Later update
+
+It turns out that this lib can be used not simply to validate the presets in the Playground, but also to validate prompts and their expected responses in various notebooks.
+
+For instance in the [Construction Prompts](https://docs.cohere.com/docs/constructing-prompts) course, there are dozens of outputs generated, and it would be useful to know when an update in the model leads to significant changes, as agreed by [@mrmer1](https://github.com/mrmer1):
+
+<img src="./screenshot_twitter.png" width="400">
+
+We are only importing prompts for which the temperature is at maximum 0.5. Above that, it becomes too random and it doesn't make sense to expect outputs to have a strong cosine similarity.
+
 ## How does it work
 
 The approach is very simple and goes through the following steps:
@@ -71,13 +81,26 @@ Here's the flow in a diagram:
 You should see something like this in your terminal:
 
 ```
-✅, Preset Name: Product Feature to Benefit, Cosine Similarity: 0.97
-✅, Preset Name: Product Pitch, Cosine Similarity: 0.91
-✅, Preset Name: Business Model Canvas, Cosine Similarity: 0.95
-✅, Preset Name: Email Keyword Extraction, Cosine Similarity: 0.99
-✅, Preset Name: Simplify Technical Concepts, Cosine Similarity: 0.81
-❌, Preset Name: Keywords To Email, Cosine Similarity: 0.44
-❌, Preset Name: Victorian Style Writing, Cosine Similarity: 0.53
+✅, Preset Name: Playground Generate Showcase - Product Feature to Benefit, Cosine Similarity: 0.98
+✅, Preset Name: Playground Generate Showcase - Product Pitch, Cosine Similarity: 0.89
+✅, Preset Name: Playground Generate Showcase - Business Model Canvas, Cosine Similarity: 0.89
+✅, Preset Name: Playground Generate Showcase - Email Keyword Extraction, Cosine Similarity: 0.99
+✅, Preset Name: Playground Generate Showcase - Simplify Technical Concepts, Cosine Similarity: 0.81
+❌, Preset Name: Playground Generate Showcase - Keywords To Email, Cosine Similarity: 0.50
+❌, Preset Name: Playground Generate Showcase - Victorian Style Writing, Cosine Similarity: 0.76
+✅, Preset Name: Constructing prompts - Instruction, Cosine Similarity: 0.83
+✅, Preset Name: Constructing prompts - Specifics, Cosine Similarity: 0.88
+✅, Preset Name: Constructing prompts - Structured, Cosine Similarity: 0.83
+✅, Preset Name: Constructing prompts - Without Context, Cosine Similarity: 0.82
+✅, Preset Name: Constructing prompts - With Context, Cosine Similarity: 0.93
+❌, Preset Name: Constructing prompts - Without Examples, Cosine Similarity: 0.67
+❌, Preset Name: Constructing prompts - With Examples, Cosine Similarity: 0.57
+❌, Preset Name: Constructing prompts - Without Examples (Chain of Thought), Cosine Similarity: 0.48
+✅, Preset Name: Constructing prompts - With Examples (Chain of Thought), Cosine Similarity: 0.97
+❌, Preset Name: Constructing prompts - Table Format, Cosine Similarity: 0.63
+✅, Preset Name: Constructing prompts - JSON Format, Cosine Similarity: 0.82
+❌, Preset Name: Constructing prompts - Without Steps, Cosine Similarity: 0.54
+✅, Preset Name: Constructing prompts - With Prefix (Zero Shot Chain of Thought), Cosine Similarity: 0.81
 ```
 
 This tells us that the `Keywords To Email` and `Victorian Style Writing` presets' prompts need to be updated. And indeed, if we have a look at the presets, we see that the current output is way too different from the expected output.

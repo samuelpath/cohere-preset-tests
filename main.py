@@ -7,13 +7,14 @@ from config import api_key, minimum_cosine_similarity
 co = cohere.Client(api_key)
 
 class Preset:
-    def __init__(self, name, max_tokens, temperature, stop_sequences, prompt, expected_output):
+    def __init__(self, name, max_tokens, temperature, stop_sequences, prompt, expected_output, doc_url):
         self.name = name
         self.max_tokens = max_tokens
         self.temperature = temperature
         self.stop_sequences = stop_sequences
         self.prompt = prompt
         self.expected_output = expected_output
+        self.doc_url = doc_url
 
 def get_current_output(prompt, max_tokens, temperature, stop_sequences):
     """
